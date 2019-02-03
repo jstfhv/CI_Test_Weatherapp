@@ -11,13 +11,13 @@ Feature: Automated User Acceptance Tests for the Sentiment Analysis Application
   Scenario: Test real location
     Given Login with user 'user@test.com'
     When Check the weather 'Dornbirn'
-    Then The Location should be 'Dornbirn'
+    Then The Location should be Dornbirn
     And I press logout
 
   Scenario: Test unknown location
     Given Login with user 'user@test.com'
     When Check the weather 'asdf1234'
-    Then The Location should be 'City not found'
+    Then The Weather should be City not found
     And I press logout
 
   Scenario: User interaction with history (video)

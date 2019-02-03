@@ -84,12 +84,24 @@ public class WeatherAnalysisSteps {
 
 	@Then("^The Location should be (.*?)$")
 	// wait until the result has been received
-	public void checkSentiment(String location) {
+	public void checkLocation(String location) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("analyzeBtn")));
 		WebElement weatherLocation = driver.findElement(By.id("location"));
 		assertEquals(location, weatherLocation.getText());
 	}
+
+
+	@Then("^The Weather should be (.*?)$")
+	// wait until the result has been received
+	public void checkWeather(String location) {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("analyzeBtn")));
+		WebElement weatherLocation = driver.findElement(By.id("location"));
+		assertEquals(location, weatherLocation.getText());
+	}
+
+
 
 	@When("^I press logout$")
 	public void logout() {
@@ -104,7 +116,7 @@ public class WeatherAnalysisSteps {
 
 	@Then("^I see the login page$")
 	public void checkLoginPage() {
-		assertFalse(driver.findElements(By.id("logo")).isEmpty());
+		assertTrue(driver.findElements( By.id("loginBtn") ).size() != 0);
 	}
 
 	@When("^Navigate to history$")
@@ -116,7 +128,7 @@ public class WeatherAnalysisSteps {
 	@Then("^The ([0-9]). row shows the history item with text '(.*?)' has weatherinformations")
 	public void checkHistoryItem(int row, String text) {
 		WebElement textCell = driver.findElement(By.xpath("//table/tbody/tr[" + row + "]/td[1]"));
-		WebElement weatherCell = driver.findElement(By.xpath("//table/tbody/tr[" + row + "]/td[2]/i"));
+		WebElement weatherCell = driver.findElement(By.xpath("//table/tbody/tr[" + row + "]/td[2]"));
 		String weather = weatherCell.getText();
 		assertEquals(text, textCell.getText());
 		assertTrue(weather.contains("temperature"));
