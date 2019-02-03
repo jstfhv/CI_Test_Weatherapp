@@ -114,7 +114,7 @@ public class WeatherAnalysisSteps {
 
 
 	@Then("^The ([0-9]). row shows the history item with text '(.*?)' has weatherinformations")
-	public void checkHistoryItem(int row, String text, String sentiment) {
+	public void checkHistoryItem(int row, String text) {
 		WebElement textCell = driver.findElement(By.xpath("//table/tbody/tr[" + row + "]/td[1]"));
 		WebElement weatherCell = driver.findElement(By.xpath("//table/tbody/tr[" + row + "]/td[2]/i"));
 		String weather = weatherCell.getText();
