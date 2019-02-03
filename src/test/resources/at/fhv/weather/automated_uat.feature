@@ -21,7 +21,7 @@ Feature: Automated User Acceptance Tests for the Sentiment Analysis Application
     And I press logout
 
   Scenario: User interaction with history (video)
-    Given Login with user 'user@test.com'
+    Given Login with user 'user2@test.com'
     When Check the weather 'Dornbirn'
     When Check the weather 'Bregenz'
     And Navigate to history

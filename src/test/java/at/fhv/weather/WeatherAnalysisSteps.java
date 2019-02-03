@@ -94,11 +94,11 @@ public class WeatherAnalysisSteps {
 
 	@Then("^The Weather should be (.*?)$")
 	// wait until the result has been received
-	public void checkWeather(String location) {
+	public void checkWeather(String weather) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("analyzeBtn")));
-		WebElement weatherLocation = driver.findElement(By.id("location"));
-		assertEquals(location, weatherLocation.getText());
+		WebElement weatherLocation = driver.findElement(By.id("weather"));
+		assertEquals(weather, weatherLocation.getText());
 	}
 
 
